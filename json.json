@@ -1,0 +1,1 @@
+"{"lexico":[{"type": "IDENTIFICADOR", "value": "hola"}, {"type": "SIMBOLO_ASIGNACION", "value": "="}, {"type": "NUMERO", "value": "5"}, {"type": "FIN", "value": ";"}],"sintactico":[{"type": "NUMERO"}, {"type": "ASIGNACION"}],"errores": ["{"error": "variable 'hola' no declarada"}"],"tabla_simbolos": []}"

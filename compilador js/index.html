@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejecutar Código JavaScript</title>
+    <style>
+        /* Estilos para el diseño de la página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        #contenedor {
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            height: 80%;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #editor {
+            flex: 1;
+            padding: 20px;
+            resize: none;
+            border: none;
+        }
+
+        #resultado {
+            flex: 1;
+            padding: 20px;
+            border-left: 1px solid #ccc;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="contenedor">
+        <!-- Área de código -->
+        <textarea id="editor" placeholder="Escribe tu código aquí"></textarea>
+
+        <!-- Área de visualización -->
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        // Obtenemos los elementos del DOM
+        const editor = document.getElementById('editor');
+        const resultado = document.getElementById('resultado');
+
+        // Evento para ejecutar el código cuando se escriba en el editor
+        editor.addEventListener('input', () => {
+            // Limpiamos el área de visualización
+            resultado.innerHTML = '';
+
+            try {
+                // Obtenemos el código del editor
+                const codigo = editor.value;
+
+                // Ejecutamos el código y mostramos el resultado en el área de visualización
+                const resultadoCodigo = eval(codigo);
+                resultado.textContent = resultadoCodigo;
+            } catch (error) {
+                // Mostramos cualquier error en el área de visualización
+                resultado.textContent = 'Error: ' + error.message;
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+<!-- const suma = () => {
+    const num1 = parseFloat(prompt('Ingresa el primer número'));
+    const num2 = parseFloat(prompt('Ingresa el segundo número'));
+
+    if (!isNaN(num1) && !isNaN(num2)) {
+        return `La suma es: ${num1 + num2}`;
+    } else {
+        return 'Por favor, ingresa números válidos';
+    }
+};
+
+suma(); -->
