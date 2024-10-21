@@ -118,8 +118,8 @@
             <div style="display: flex; flex-direction: column;">
                 <button type="button" id="analizar" style="padding: 10px 20px; background-color: #333; color: #fff; border: none; cursor: pointer;">Analizar</button>
                 <label>Lexico<input checked type="checkbox" id="lex"></label>
-                <!-- <label>Sintactico<input checked type="checkbox" id="sin"></label>
-                <label>Semantico<input checked type="checkbox" id="sem"></label>
+                <label>Sintactico<input checked type="checkbox" id="sin"></label>
+                <!--<label>Semantico<input checked type="checkbox" id="sem"></label>
                 <label>Tabla<input checked type="checkbox" id="tab"></label> -->
             </div>
         </form>
@@ -133,13 +133,13 @@
             </table>
         </div>
 
-        <!-- <div class="output">
-            <span>Analisis Sintactico - Pos fijo</span>
+        <div class="output">
+            <span>Analisis Sintactico</span>
             <table>
                 <tbody id="sintactico">
                 </tbody>
             </table>
-        </div> -->
+        </div>
 
         <!-- <div class="output">
             <span>Analisis Semantico</span>
@@ -165,12 +165,12 @@
         const analizarButton = document.getElementById('analizar');
 
         const LexicoDiv = document.getElementById('lexico');
-        // const SintacticoDiv = document.getElementById('sintactico');
+        const SintacticoDiv = document.getElementById('sintactico');
         // const SemanticoDiv = document.getElementById('semantico');
         // const SimboloDiv = document.getElementById('simbolo');
 
         const lexCheckbox = document.getElementById('lex');
-        //const sinCheckbox = document.getElementById('sin');
+        const sinCheckbox = document.getElementById('sin');
         //const semCheckbox = document.getElementById('sem');
         //const tabCheckbox = document.getElementById('tab');
 
@@ -183,7 +183,7 @@
             const texto = textoInput.value.replace(/\n/g, ' ');
             if(!texto){
                 LexicoDiv.innerHTML = '';
-                // SintacticoDiv.innerHTML = '';
+                SintacticoDiv.innerHTML = '';
                 // SemanticoDiv.innerHTML = '';
                 // SimboloDiv.innerHTML = '';
             }else{
@@ -220,20 +220,20 @@
                             LexicoDiv.innerHTML = '';
                         }
 
-                        // if (sinCheckbox.checked) {
-                        //     SintacticoDiv.innerHTML = '';
-                        //     resultado.sintactico.forEach(token => {
-                        //         SintacticoDiv.innerHTML += ` <tr><td>${token.type}</td> </tr>`;
-                        //     });
+                        if (sinCheckbox.checked) {
+                            SintacticoDiv.innerHTML = '';
+                            resultado.sintactico.forEach(token => {
+                                SintacticoDiv.innerHTML += ` <tr><td>${token.type}</td> </tr>`;
+                            });
 
-                        //     if (SintacticoDiv.innerHTML.includes("ERROR")) {
-                        //         SintacticoDiv.style.color = 'red';
-                        //     } else {
-                        //         SintacticoDiv.style.color = '';
-                        //     }
-                        // }else{
-                        //     SintacticoDiv.innerHTML = '';
-                        // }
+                            if (SintacticoDiv.innerHTML.includes("ERROR")) {
+                                SintacticoDiv.style.color = 'red';
+                            } else {
+                                SintacticoDiv.style.color = '';
+                            }
+                        }else{
+                            SintacticoDiv.innerHTML = '';
+                        }
 
                         // if (semCheckbox.checked) {
                         //     SemanticoDiv.innerHTML = '';
