@@ -119,8 +119,8 @@
                 <button type="button" id="analizar" style="padding: 10px 20px; background-color: #333; color: #fff; border: none; cursor: pointer;">Analizar</button>
                 <label>Lexico<input checked type="checkbox" id="lex"></label>
                 <label>Sintactico<input checked type="checkbox" id="sin"></label>
-                <!--<label>Semantico<input checked type="checkbox" id="sem"></label>
-                <label>Tabla<input checked type="checkbox" id="tab"></label> -->
+                <label>Semantico<input checked type="checkbox" id="sem"></label>
+                <label>Tabla<input checked type="checkbox" id="tab"></label>
             </div>
         </form>
 
@@ -141,22 +141,22 @@
             </table>
         </div>
 
-        <!-- <div class="output">
+        <div class="output">
             <span>Analisis Semantico</span>
             <table>
                 <tbody id="semantico">
                 </tbody>
             </table>
-        </div> -->
+        </div>
 
 
-        <!-- <div class="output">
+        <div class="output">
             <span>Tabla de Simbolos</span>
             <table >
                 <tbody id="simbolo">
                 </tbody>
             </table>
-        </div> -->
+        </div>
         </div>
     </div>
 
@@ -166,13 +166,13 @@
 
         const LexicoDiv = document.getElementById('lexico');
         const SintacticoDiv = document.getElementById('sintactico');
-        // const SemanticoDiv = document.getElementById('semantico');
-        // const SimboloDiv = document.getElementById('simbolo');
+        const SemanticoDiv = document.getElementById('semantico');
+        const SimboloDiv = document.getElementById('simbolo');
 
         const lexCheckbox = document.getElementById('lex');
         const sinCheckbox = document.getElementById('sin');
-        //const semCheckbox = document.getElementById('sem');
-        //const tabCheckbox = document.getElementById('tab');
+        const semCheckbox = document.getElementById('sem');
+        const tabCheckbox = document.getElementById('tab');
 
         analizarButton.addEventListener('click', () => {
             const texto = textoInput.value.replace(/\n/g, ' ');
@@ -184,8 +184,8 @@
             if(!texto){
                 LexicoDiv.innerHTML = '';
                 SintacticoDiv.innerHTML = '';
-                // SemanticoDiv.innerHTML = '';
-                // SimboloDiv.innerHTML = '';
+                SemanticoDiv.innerHTML = '';
+                SimboloDiv.innerHTML = '';
             }else{
                 actualizarResultado(texto);
             }
@@ -235,29 +235,29 @@
                             SintacticoDiv.innerHTML = '';
                         }
 
-                        // if (semCheckbox.checked) {
-                        //     SemanticoDiv.innerHTML = '';
-                        //     resultado.errores.forEach(token => {
-                        //         SemanticoDiv.innerHTML += ` <tr><td>${token}</td> </tr>`;
-                        //     });
+                        if (semCheckbox.checked) {
+                            SemanticoDiv.innerHTML = '';
+                            resultado.errores.forEach(token => {
+                                SemanticoDiv.innerHTML += ` <tr><td>${token}</td> </tr>`;
+                            });
 
-                        //     if (SemanticoDiv.innerHTML.includes("ERROR")) {
-                        //         SemanticoDiv.style.color = 'red';
-                        //     } else {
-                        //         SemanticoDiv.style.color = '';
-                        //     }
-                        // }else{
-                        //     SemanticoDiv.innerHTML = '';
-                        // }
+                            if (SemanticoDiv.innerHTML.includes("ERROR")) {
+                                SemanticoDiv.style.color = 'red';
+                            } else {
+                                SemanticoDiv.style.color = '';
+                            }
+                        }else{
+                            SemanticoDiv.innerHTML = '';
+                        }
 
-                        // if (tabCheckbox.checked) {
-                        //     SimboloDiv.innerHTML = `<tr style="background: #e1e1e1;"><td >Tipo</td><td>Identificador</td><td>Valor</td> </tr>`;
-                        //     resultado.tabla_simbolos.forEach(token => {
-                        //         SimboloDiv.innerHTML += ` <tr><td >${token.tipo}</td><td >${token.identificador}</td><td >${token.valor}</td> </tr>`;
-                        //     });
-                        // }else{
-                        //     SimboloDiv.innerHTML = '';
-                        // }
+                        if (tabCheckbox.checked) {
+                            SimboloDiv.innerHTML = `<tr style="background: #e1e1e1;"><td >Tipo</td><td>Identificador</td><td>Valor</td> </tr>`;
+                            resultado.tabla_simbolos.forEach(token => {
+                                SimboloDiv.innerHTML += ` <tr><td >${token.tipo}</td><td >${token.identificador}</td><td >${token.valor}</td> </tr>`;
+                            });
+                        }else{
+                            SimboloDiv.innerHTML = '';
+                        }
                         
                         
 
